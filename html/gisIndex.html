@@ -48,7 +48,7 @@
         methods : {
             fetchPoint : function(){
                 gisInteraction.getPointForResetPosition(function(pos){
-                    console.log(pos);
+                    alert("点位坐标：["+pos[0]+","+pos[1]+"]");
                 })
 
             },
