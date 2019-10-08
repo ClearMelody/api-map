@@ -3,70 +3,70 @@
     "name":"张国立",
     "sex":"男",
     "level":1,
-    "longitude": 114.2356,
+    "longitude": 114.2656,
     "latitude": 30.5621
   },
   {
     "name":"张铁林",
     "sex":"男",
     "level":2,
-    "longitude": 114.2383,
+    "longitude": 114.2683,
     "latitude": 30.5511
   },
   {
     "name":"邓婕",
     "sex":"女",
     "level":3,
-    "longitude": 114.2555,
+    "longitude": 114.2655,
     "latitude": 30.5254
   },
   {
     "name":"张默",
     "sex":"男",
     "level":4,
-    "longitude": 114.2875,
+    "longitude": 114.2775,
     "latitude": 30.5421
   },
   {
     "name":"王刚",
     "sex":"男",
     "level":1,
-    "longitude": 114.2234,
-    "latitude": 30.5731
+    "longitude": 114.2636,
+    "latitude": 30.5611
   },
   {
     "name":"郑宗摸",
     "sex":"男",
     "level":1,
-    "longitude": 114.2434,
-    "latitude": 30.5231
+    "longitude": 114.2634,
+    "latitude": 30.5531
   },
   {
     "name":"罗长友",
     "sex":"男",
     "level":3,
-    "longitude": 114.2214,
-    "latitude": 30.5231
+    "longitude": 114.2614,
+    "latitude": 30.5731
   },
   {
     "name":"焉昌梅",
     "sex":"女",
     "level":1,
-    "longitude": 114.2134,
-    "latitude": 30.5131
+    "longitude": 114.2613,
+    "latitude": 30.5631
   },
   {
     "name":"刘备",
     "sex":"男",
     "level":1,
-    "longitude": 114.3234,
-    "latitude": 30.5231
+    "longitude": 114.2634,
+    "latitude": 30.5651
   },
   {
     "name":"张飞",
     "sex":"男",
     "level":1,
-    "longitude": 114.2334,
-    "latitude": 30.5931
+    "longitude": 114.2634,
+    "latitude": 30.5681
   }
 ]
