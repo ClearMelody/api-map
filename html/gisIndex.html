@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于Openlayer3的离线GIS简要应用</title>
+    <link rel="stylesheet" href="../css/GisNew.css">
+    <style>
+        .custom-mouse-position{
+            width: 120px;
+            line-height: 30px;
+            position: absolute;
+            bottom: 0px;            right: 20px;
+            color: red;
+        }
+    </style>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/JHashMap.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="mapDiv" style="width:100%;height:100%;"></div>
+        <div style="position:absolute;top:10px;left:10px;">
+            <el-button type="primary" @click="fetchPoint">取点</el-button>
+            <el-button type="primary">定位</el-button>
+            <el-button type="primary" @click="showFocalmanLayers">图层</el-button>
+            <el-button type="primary">轨迹</el-button>
+            <el-button type="primary">画圆</el-button>
+            <el-button type="primary">画多边形</el-button>
+            <el-button type="primary">测距</el-button>
+        </div>
+    </div>
+
+</body>
+<script src="../js/o3/util/util.js"></script>
+<script src="../js/o3/v3.10.0/gisInteraction.js"></script>
+<script src="../js/initBusinessMap.js"></script>
+<script>
+
+    new Vue({
+        data : {
+            msg : 'vue'
+        },
+        methods : {
+            fetchPoint : function(){
+                gisInteraction.getPointForResetPosition(function(pos){
+                    console.log(pos);
+                })
+
+            },
+            showFocalmanLayers : function(){
+                var img = [
+                    "../img/layerIco/zdry/zdry01.png",
+                    "../img/layerIco/zdry/zdry02.png",
+                    "../img/layerIco/zdry/zdry03.png",
+                    "../img/layerIco/zdry/zdry04.png",
+                ];
+                $.getJSON("../data/focalman.json", function (data){
+                    var markerList = [];
+                    for (var i = 0; i < data.length; i++) {
+                        var _randomStrId = Math.floor(Math.random()*10000000000);
+                        var obj = {
+                            id : _randomStrId,
+                            name: data[i].name,
+                            img: img[data[i].level-1],
+                            lon: data[i].longitude,
+                            lat: data[i].latitude,
+                            att: data[i]
+                        }
+                        markerList.push(obj);
+                    }
+                    gisInteraction.addClusterMarkers("focalmanClusterLayer", markerList, function(){
+
+                    },
+                    function(){
+
+                    })
+                })
+            }
+        }
+    }).$mount('#app')
+
+
+    $("#mapDiv").initMap({
+        initMapZoom: 15,
+        onLoadMapSuccess: function (map) {
+            window.map = map;
+        }
+    })
+
+</script>
+</html>
