@@ -28,7 +28,7 @@
             <el-button type="primary" @click="fetchPoint">取点</el-button>
             <el-button type="primary">定位</el-button>
             <el-button type="primary" @click="showFocalmanLayers">图层</el-button>
-            <el-button type="primary">轨迹</el-button>
+            <el-button type="primary" @click="drawGuijiOnMap">轨迹</el-button>
             <el-button type="primary">画圆</el-button>
             <el-button type="primary">画多边形</el-button>
             <el-button type="primary">测距</el-button>
@@ -79,6 +79,28 @@
                     function(){
 
                     })
+                })
+            },
+            drawGuijiOnMap : function(){
+                $.getJSON("../data/track.json", function (data){
+                    var pntList = [];
+                    for(var i=0;i<data.length;i++){
+                        pntList.push([data[i].longitude*1, data[i].latitude*1]);
+                    }
+                    var att = {id : "gjTemp"};
+                    //将路线及箭头添加到地图
+                    var styleInfo = {
+                        arrowIcon: '../img/GisNew/arrow1.png',
+                        lineColor: "#5cd610",
+                        lineWidth: "10",
+                        borderColor: '#fff',
+                        borderWidth: "2",
+                        fontColor: 'rgba(0,0,0,0.8)',
+                        fontOuterColor: 'rgba(255, 255, 0, 0.3)',
+                        fontOuterSize: 3,
+                    };
+                    window.gisInteraction.clearFeatures("guiji");
+                    window.gisInteraction.addLineTrackArrow2Map("guiji", pntList, styleInfo, att);
                 })
             }
         }
